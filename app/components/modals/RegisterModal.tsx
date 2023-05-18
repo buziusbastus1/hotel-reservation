@@ -5,8 +5,16 @@ import { FcGoogle } from "react-icons/fc";
 import { useCallback, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import useRegisterModal from "../../hooks/useRegisterModal";
-const RefisterModal = () => {
-  return <div></div>;
+import Modal from "./Modal";
+
+const RegisterModal = () => {
+  return (
+    <Modal
+      disabled={isLoading}
+      isOpen={RegisterModal.isOpen}
+      title="Register"
+    />
+  );
 };
 
-export default RefisterModal;
+export default RegisterModal;
