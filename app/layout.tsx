@@ -3,6 +3,7 @@ import Navbar from "./components/navbar/Navbar";
 import "./globals.css";
 import { Nunito } from "next/font/google";
 import ToasterProvider from "./providers/ToasterProvider";
+import ClientOnly from "./components/ClientOnly";
 
 export const metadata = {
   title: "Hotel Reservation",
@@ -19,11 +20,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
-        <ToasterProvider />
-        <RegisterModal />
-        <Navbar />
-
-        {children}
+        <ClientOnly>
+          <ToasterProvider />
+          <RegisterModal />
+          {/* <LoginModal />
+          <SearchModal />
+          <RentModal /> */}
+          <Navbar />
+        </ClientOnly>
+        <div className="pb-20 pt-28">{children}</div>
       </body>
     </html>
   );

@@ -6,7 +6,7 @@ import MenuItem from "./MenuItem";
 import { useCallback, useState } from "react";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 const UserMenu = () => {
-  const RegisterModal = useRegisterModal;
+  const registerModal = useRegisterModal();
   const [isOpen, setIsopen] = useState(false);
 
   const toggleOpen = useCallback(() => {
@@ -35,7 +35,7 @@ const UserMenu = () => {
           <div className="flex flex-col cursor-pointer">
             <>
               <MenuItem onClick={() => {}} label="Login" />
-              <MenuItem onClick={RegisterModal.onOpen} label="Singn up" />
+              <MenuItem onClick={registerModal.onOpen} label="Singn up" />
             </>
           </div>
         </div>

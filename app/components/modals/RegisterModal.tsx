@@ -9,6 +9,8 @@ import Modal from "./Modal";
 import { error } from "console";
 import Heading from "../navbar/Heading";
 import Input from "../inputs/input";
+import toast from "react-hot-toast";
+import Button from "../Button";
 
 const RegisterModal = () => {
   const registerModal = useRegisterModal();
@@ -33,7 +35,7 @@ const RegisterModal = () => {
         registerModal.onClose();
       })
       .catch((error) => {
-        console.log(error);
+        toast.error("wrong");
       })
       .finally(() => {
         setIsLoading(false);
@@ -67,6 +69,34 @@ const RegisterModal = () => {
         errors={errors}
         required
       />
+    </div>
+  );
+  const footerContent = (
+    <div>
+      <hr />
+      <Button
+        outline
+        label="Google Register"
+        icon={FcGoogle}
+        onClick={() => {}}
+      ></Button>
+      <Button
+        outline
+        label="Github Register"
+        icon={AiFillGithub}
+        onClick={() => {}}
+      />
+      <div className="text-neutral-500 text-center mt-4 font-light">
+        <div className=" justify-center flex flex-row items-center gap-2">
+          <div>Already have?</div>
+          <div
+            onClick={registerModal.onClose}
+            className="text-neutral-800 cursor-pointer hover:underline"
+          >
+            Log in
+          </div>
+        </div>
+      </div>
     </div>
   );
   return (

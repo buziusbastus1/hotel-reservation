@@ -112,6 +112,7 @@ ${showModal ? "opacity-100" : "opacity-0"}
                       onClick={handleSubmit}
                     />
                   </div>
+                  {footer}
                 </div>
               </div>
             </div>
