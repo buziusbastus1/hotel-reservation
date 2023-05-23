@@ -5,6 +5,7 @@ import "./globals.css";
 import { Nunito } from "next/font/google";
 import ToasterProvider from "./providers/ToasterProvider";
 import ClientOnly from "./components/ClientOnly";
+import getCurrentUser from "./actions/getCurrentUser";
 
 export const metadata = {
   title: "Hotel Reservation",
@@ -13,11 +14,12 @@ export const metadata = {
 const font = Nunito({
   subsets: ["cyrillic-ext"],
 });
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const currentUser = await getCurrentUser();
   return (
     <html lang="en">
       <body className={font.className}>
@@ -27,7 +29,7 @@ export default function RootLayout({
           <LoginModal />
           {/* <SearchModal />
           <RentModal /> */}
-          <Navbar />
+          <Navbar currentUser={currentUser} />
         </ClientOnly>
         <div className="pb-20 pt-28">{children}</div>
       </body>
