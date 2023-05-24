@@ -93,27 +93,27 @@ ${showModal ? "opacity-100" : "opacity-0"}
                   <IoMdClose size={18} />
                 </button>
                 <div className="tex-lg font-semibold">{title}</div>
-                {/* body */}
-                <div className="relative p-6 flex-auto">{body}</div>
-                {/* footer */}
-                <div className="flex flex-col gap-2 p-6">
-                  <div className="flex flex-row items-center gap-4 w-full">
-                    {secondaryAction && secondaryActionLabel && (
-                      <Button
-                        outline
-                        disabled={disabled}
-                        label={secondaryActionLabel}
-                        onClick={handleSecondaryAction}
-                      />
-                    )}
+              </div>
+              {/* body */}
+              <div className="relative p-6 flex-auto">{body}</div>
+              {/* footer */}
+              <div className="flex flex-col gap-2 p-6">
+                <div className="flex flex-row items-center gap-4 w-full">
+                  {secondaryAction && secondaryActionLabel && (
                     <Button
+                      outline
                       disabled={disabled}
-                      label={actionLabel}
-                      onClick={handleSubmit}
+                      label={secondaryActionLabel}
+                      onClick={handleSecondaryAction}
                     />
-                  </div>
-                  {footer}
+                  )}
+                  <Button
+                    disabled={disabled}
+                    label={actionLabel}
+                    onClick={handleSubmit}
+                  />
                 </div>
+                {footer}
               </div>
             </div>
           </div>
