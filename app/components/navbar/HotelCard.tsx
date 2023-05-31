@@ -1,9 +1,8 @@
-const HotelCard = () => {
-  return (
-    <div>
-      <img src="https://i.postimg.cc/ZRWdddTb/download.jpg" alt="h" />
-    </div>
-  );
+interface HotelCardProps {
+  data: Record<string, any>;
+}
+const HotelCard: React.FC<HotelCardProps> = ({ data }) => {
+  return <div>{/* <img src={data.imageSrc} alt="h" /> */}</div>;
 };
 
 export default HotelCard;
