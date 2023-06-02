@@ -1,3 +1,12 @@
+import Container from "./Container";
+import ClientOnly from "./components/ClientOnly";
+
 export default function Home() {
-  return <div className="text-rose-500 text-3xl"></div>;
+  return (
+    <ClientOnly>
+      <Container>
+        <div className="pt-24 grid grid-cols-1 sm:grid-cols-2"></div>
+      </Container>
+    </ClientOnly>
+  );
 }
