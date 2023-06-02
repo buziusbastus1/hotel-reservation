@@ -7,7 +7,7 @@ import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import useRegisterModal from "../../hooks/useRegisterModal";
 import Modal from "./Modal";
 import { error } from "console";
-import Heading from "../navbar/Heading";
+import Heading from "../Heading";
 import Input from "../inputs/input";
 import toast from "react-hot-toast";
 import Button from "../Button";
