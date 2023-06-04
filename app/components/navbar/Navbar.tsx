@@ -2,7 +2,6 @@
 
 import Container from "../../Container";
 import Categories from "./Categories";
-import HotelCard from "./HotelCard";
 import Search from "./Search";
 import UserMenu from "./UserMenu";
 import { SafeUser } from "@/app/types";
@@ -21,7 +20,6 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
             <Search />
             <UserMenu currentUser={currentUser} />
           </div>
-          <HotelCard />
         </Container>
       </div>
       <Categories />
