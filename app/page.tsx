@@ -25,7 +25,7 @@ export default async function Home() {
         >
           {listings.map((listing: any) => {
             return (
-              //<div>{listing.title}</div>;
+              // <div>{listing.title}</div>
               <HotelCard
                 currentUser={currentUser}
                 key={listing.id}
