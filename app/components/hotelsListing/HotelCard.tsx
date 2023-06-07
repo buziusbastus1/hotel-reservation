@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useCallback, useMemo } from "react";
 
 import useCountries from "@/app/hooks/useCountries";
-import { SafeUser } from "@/app/types";
+import { SafeListing, SafeUser } from "@/app/types";
 
 import HeartButton from "../HeartButton";
 import Button from "../Button";
@@ -13,8 +13,8 @@ import ClientOnly from "../ClientOnly";
 import { format } from "date-fns";
 import { Reservation, Listing } from "@prisma/client";
 
-interface ListingCardProps {
-  data: Listing;
+interface HotelCardProps {
+  data: SafeListing;
   reservation?: Reservation;
   onAction?: (id: string) => void;
   disabled?: boolean;
@@ -23,7 +23,7 @@ interface ListingCardProps {
   currentUser?: SafeUser | null;
 }
 
-const ListingCard: React.FC<ListingCardProps> = ({
+const HotelCard: React.FC<HotelCardProps> = ({
   data,
   reservation,
   onAction,
@@ -72,7 +72,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
   return (
     <div
       onClick={() => router.push(`/listings/${data.id}`)}
-      className="col-span-1 cursor-pointer group"
+      className="col-span-1 cursor-pointer group z-0"
     >
       <div className="flex flex-col gap-2 w-full">
         <div
@@ -82,6 +82,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
             relative 
             overflow-hidden 
             rounded-xl
+            z-0
           "
         >
           <Image
@@ -129,4 +130,4 @@ const ListingCard: React.FC<ListingCardProps> = ({
   );
 };
 
-export default ListingCard;
+export default HotelCard;

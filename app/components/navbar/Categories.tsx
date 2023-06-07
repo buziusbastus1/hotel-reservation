@@ -22,7 +22,7 @@ export const categories = [
 const Categories = () => {
   return (
     <Container>
-      <div className="pt-4 flex flex-row items-center justify-between overflow-x-auto">
+      <div className=" bg-slate-100 first-line:selection:pt-4 flex flex-row items-center justify-between overflow-x-auto z-10">
         {categories.map((item) => (
           <CategoryBox
             key={item.label}
