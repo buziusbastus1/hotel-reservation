@@ -7,7 +7,7 @@ import useCountries from "@/app/hooks/useCountries";
 import { SafeUser } from "@/app/types";
 
 import Avatar from "../Avatar";
-import ListingCategory from "./ListingCategory";
+import ListingCategory from "./HotelCategory";
 
 interface ListingInfoProps {
   user: SafeUser;
