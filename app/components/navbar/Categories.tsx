@@ -27,7 +27,7 @@ const Categories = () => {
           <CategoryBox
             key={item.label}
             label={item.label}
-            description={item.description}
+            // description={item.description}
             icon={item.icon}
           />
         ))}
