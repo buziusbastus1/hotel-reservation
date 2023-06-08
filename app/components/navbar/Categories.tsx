@@ -1,4 +1,4 @@
-import Container from "@/app/Container";
+import Container from "@/app/components/Container";
 import CategoryBox from "../CategoryBox";
 import { TbBeach } from "react-icons/tb";
 export const categories = [

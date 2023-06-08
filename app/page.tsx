@@ -1,4 +1,4 @@
-import Container from "./Container";
+import Container from "./components/Container";
 import getCurrentUser from "./actions/getCurrentUser";
 import getListings from "./actions/getListings";
 import ClientOnly from "./components/ClientOnly";
