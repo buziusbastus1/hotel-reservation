@@ -17,8 +17,8 @@ const ListingPage = async ({ params }: { params: IParams }) => {
   // const currentUser = await getCurrentUser();
   // const reservations = await getReservations(params);
   return (
-    // <div>{listing.title}</div>
-    <div>aaaa</div>
+    <div>{listing.title}</div>
+    // <div>aaaa</div>
   );
   // if (!listing) {
   //   return (
