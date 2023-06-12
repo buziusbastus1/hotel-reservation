@@ -10,7 +10,7 @@ interface NavbarProps {
   currentUser?: SafeUser | null;
 }
 const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
-  console.log({ currentUser });
+  // console.log({ currentUser });
 
   return (
     <div className="fixed w-full bg-whie z-10 shadow-sm">
