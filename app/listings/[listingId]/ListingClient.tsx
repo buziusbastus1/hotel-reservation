@@ -6,7 +6,7 @@ import { Reservation } from "@prisma/client";
 import { SafeListing, SafeUser } from "@/app/types";
 
 import Container from "@/app/components/Container";
-import { categories } from "@/app/components/navbar/Categories";
+import { categories } from "@/app/components/hotelsListing/Categories";
 import HotelHead from "@/app/components/hotelsListing/HotelHead";
 import HotelInfo from "@/app/components/hotelsListing/HotelInfo";
 // import ListingReservation from "@/app/components/HotelListing/ListingReservation";
