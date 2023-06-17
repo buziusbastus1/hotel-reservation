@@ -68,7 +68,6 @@ const Categories = () => {
     <Container>
       <div
         className="
-          pt-4
           flex 
           flex-row 
           items-center 
@@ -82,6 +81,7 @@ const Categories = () => {
           icon={categoryObj.icon}
           // selected={category === categoryObj.label}
         />
+        xd
       </div>
     </Container>
   );

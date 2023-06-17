@@ -83,7 +83,7 @@ const HotelCard: React.FC<HotelCardProps> = ({
             overflow-hidden 
             rounded-xl
             z-0
-            sm:h-64 md:h-72 lg:h-80 xl:h-96
+            sm:h-64  
           "
         >
           <Image
