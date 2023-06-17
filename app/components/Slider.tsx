@@ -13,13 +13,26 @@ const Slider = ({ children }) => {
   };
 
   return (
-    <div className="relative w-full overflow-hidden">
+    <div className="relative w-full overflow-hidden ">
       <div
         className="flex transition-transform duration-300"
-        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+        style={{
+          transform: `translateX(-${currentIndex * (100 / children.length)}%)`,
+          width: `${children.length * 50}%`,
+        }}
       >
-        {children}
+        {/* {children} */}
+        {children.map((child, index) => (
+          <div
+            key={index}
+            className="w-full flex-shrink-0"
+            style={{ width: `${100 / (children.length * 2)}%` }}
+          >
+            {child}
+          </div>
+        ))}
       </div>
+
       <button
         className={`absolute top-1/2 transform -translate-y-1/2 left-4 bg-gray-500 text-white font-bold py-2 px-4 rounded-full focus:outline-none ${
           currentIndex === 0 ? "hidden" : ""

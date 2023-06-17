@@ -72,7 +72,7 @@ const HotelCard: React.FC<HotelCardProps> = ({
   return (
     <div
       onClick={() => router.push(`/listings/${data.id}`)}
-      className="col-span-1 cursor-pointer group z-0"
+      className="col-span-1 cursor-pointer group z-0 mx-2"
     >
       <div className="flex flex-col gap-2 w-full">
         <div
@@ -83,6 +83,7 @@ const HotelCard: React.FC<HotelCardProps> = ({
             overflow-hidden 
             rounded-xl
             z-0
+            sm:h-64 md:h-72 lg:h-80 xl:h-96
           "
         >
           <Image
