@@ -11,6 +11,17 @@ export default async function Home() {
   const listings = await getListings();
   const currentUser = await getCurrentUser();
 
+  const firstCategory = "Beach";
+  const secondCategory = "Mountains";
+
+  const filteredListingsFirst = listings.filter(
+    (listing) => listing.category === firstCategory
+  );
+
+  const filteredListingsSecond = listings.filter(
+    (listing) => listing.category === secondCategory
+  );
+
   if (listings.length === 0) {
     return (
       <ClientOnly>
@@ -23,27 +34,23 @@ export default async function Home() {
       <Container>
         <Categories />
         <Slider>
-          {listings.map((listing) => {
-            return (
-              <HotelCard
-                currentUser={currentUser}
-                key={listing.id}
-                data={listing}
-              />
-            );
-          })}
+          {filteredListingsFirst.map((listing) => (
+            <HotelCard
+              currentUser={currentUser}
+              key={listing.id}
+              data={listing}
+            />
+          ))}
         </Slider>
         <Categories />
         <Slider>
-          {listings.map((listing) => {
-            return (
-              <HotelCard
-                currentUser={currentUser}
-                key={listing.id}
-                data={listing}
-              />
-            );
-          })}
+          {filteredListingsSecond.map((listing) => (
+            <HotelCard
+              currentUser={currentUser}
+              key={listing.id}
+              data={listing}
+            />
+          ))}
         </Slider>
       </Container>
     </ClientOnly>

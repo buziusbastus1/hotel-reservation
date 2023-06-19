@@ -7,7 +7,7 @@ import useCountries from "@/app/hooks/useCountries";
 import { SafeUser } from "@/app/types";
 
 import Avatar from "../Avatar";
-import ListingCategory from "./HotelCategory";
+import CategoryView from "./HotelCategory";
 
 interface ListingInfoProps {
   user: SafeUser;
@@ -71,7 +71,7 @@ const ListingInfo: React.FC<ListingInfoProps> = ({
       </div>
       <hr />
       {category && (
-        <ListingCategory
+        <CategoryView
           icon={category.icon}
           label={category?.label}
           description={category?.description}
