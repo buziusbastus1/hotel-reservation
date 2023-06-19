@@ -18,14 +18,14 @@ export const categories = [
     description: "This property is close to the Mountains!",
   },
 ];
-const categoryObj = categories[0];
+// const categoryObj = categories[0];
 
-const Categories = () => {
+const Categories = ({ index }: { index: number }) => {
   const params = useSearchParams();
   const category = params?.get("category");
   const pathname = usePathname();
   const isMainPage = pathname === "/";
-
+  const categoryObj = categories[index];
   if (!isMainPage) {
     return null;
   }

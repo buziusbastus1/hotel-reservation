@@ -32,7 +32,7 @@ export default async function Home() {
   return (
     <ClientOnly>
       <Container>
-        <Categories />
+        <Categories index={0} />
         <Slider>
           {filteredListingsFirst.map((listing) => (
             <HotelCard
@@ -42,7 +42,7 @@ export default async function Home() {
             />
           ))}
         </Slider>
-        <Categories />
+        <Categories index={1} />
         <Slider>
           {filteredListingsSecond.map((listing) => (
             <HotelCard
