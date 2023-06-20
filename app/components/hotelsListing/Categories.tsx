@@ -21,11 +21,13 @@ export const categories = [
 // const categoryObj = categories[0];
 
 const Categories = ({ index }: { index: number }) => {
+  const categoryObj = categories[index];
+
   const params = useSearchParams();
   const category = params?.get("category");
   const pathname = usePathname();
   const isMainPage = pathname === "/";
-  const categoryObj = categories[index];
+
   if (!isMainPage) {
     return null;
   }

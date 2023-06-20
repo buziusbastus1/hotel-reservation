@@ -26,7 +26,7 @@ const Slider = ({ children }) => {
     setCurrentIndex((prevIndex) => prevIndex - 2);
   };
 
-  const swipesPerScreen = isMobile ? 2 : 3;
+  const swipesPerScreen = isMobile ? 1.5 : 3;
   const swipeOffset = isMobile ? 2 : 0;
 
   return (
@@ -69,7 +69,8 @@ const Slider = ({ children }) => {
         className={`absolute top-1/2 transform -translate-y-1/2 right-4 bg-gray-500 text-white font-bold py-2 px-4 rounded-full focus:outline-none ${
           // currentIndex >= Math.ceil(children.length / (isMobile ? 2 : 4))
           currentIndex >=
-          Math.ceil(children.length / swipesPerScreen) - 1 + swipeOffset
+          // Math.ceil(children.length / swipesPerScreen) - 1 + swipeOffset
+          Math.ceil(children.length / swipesPerScreen) - 1
             ? "hidden"
             : ""
         }`}
