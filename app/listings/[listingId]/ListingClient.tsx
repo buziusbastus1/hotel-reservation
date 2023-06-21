@@ -1,10 +1,10 @@
 "use client";
 
+import { Range } from "react-date-range";
 import axios from "axios";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Reservation } from "@prisma/client";
 import { SafeListing, SafeUser } from "@/app/types";
-
 import Container from "@/app/components/Container";
 import { categories } from "@/app/components/hotelsListing/Categories";
 import HotelHead from "@/app/components/hotelsListing/HotelHead";
@@ -13,7 +13,7 @@ import useLoginModal from "@/app/hooks/useLoginModal";
 import { useRouter } from "next/navigation";
 import { differenceInCalendarDays, eachDayOfInterval } from "date-fns";
 import { toast } from "react-hot-toast";
-// import ListingReservation from "@/app/components/HotelListing/ListingReservation";
+import HotelReservation from "@/app/components/hotelsListing/HotelReservation";
 
 const initialDateRange = {
   startDate: new Date(),
@@ -36,7 +36,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
   const loginModal = useLoginModal();
   const router = useRouter();
 
-  useMemo(() => {
+  const disabledDates = useMemo(() => {
     let dates: Date[] = [];
     reservations.forEach((reservation: any) => {
       const range = eachDayOfInterval({
@@ -52,7 +52,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
 
   const [isLoading, setIsLoading] = useState(false);
   const [totalPrice, setTotalPrice] = useState(listing.price);
-  const [dateRange, setDateRange] = useState(initialDateRange);
+  const [dateRange, setDateRange] = useState<Range>(initialDateRange);
 
   const onCreateReservation = useCallback(() => {
     if (!currentUser) {
@@ -133,7 +133,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
               locationValue={listing.locationValue}
             />
             <div className="order-first mb-10 md:order-last md:col-span-3">
-              <ListingReservation
+              <HotelReservation
                 price={listing.price}
                 totalPrice={totalPrice}
                 onChangeDate={(value) => setDateRange(value)}
