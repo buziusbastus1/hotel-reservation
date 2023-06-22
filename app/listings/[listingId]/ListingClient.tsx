@@ -16,7 +16,7 @@ import { toast } from "react-hot-toast";
 import HotelReservation from "@/app/components/hotelsListing/HotelReservation";
 
 const initialDateRange = {
-  startDate: new Date(),
+  stertDate: new Date(),
   endDate: new Date(),
   key: "selection",
 };
@@ -40,7 +40,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
     let dates: Date[] = [];
     reservations.forEach((reservation: any) => {
       const range = eachDayOfInterval({
-        start: new Date(reservation.startDate),
+        start: new Date(reservation.stertDate),
         end: new Date(reservation.endDate),
       });
       dates = [...dates, ...range];
@@ -62,7 +62,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
     axios
       .post("/api/reservations", {
         totalPrice,
-        startDate: dateRange.startDate,
+        StertDate: dateRange.startDate,
         endDate: dateRange.endDate,
         listingId: listing?.id,
       })
