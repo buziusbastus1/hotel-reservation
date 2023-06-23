@@ -3,8 +3,7 @@
 import { Range } from "react-date-range";
 import axios from "axios";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { Reservation } from "@prisma/client";
-import { SafeListing, SafeUser } from "@/app/types";
+import { SafeListing, SafeReservation, SafeUser } from "@/app/types";
 import Container from "@/app/components/Container";
 import { categories } from "@/app/components/hotelsListing/Categories";
 import HotelHead from "@/app/components/hotelsListing/HotelHead";
@@ -16,12 +15,12 @@ import { toast } from "react-hot-toast";
 import HotelReservation from "@/app/components/hotelsListing/HotelReservation";
 
 const initialDateRange = {
-  stertDate: new Date(),
+  StertDate: new Date(),
   endDate: new Date(),
   key: "selection",
 };
 interface ListingClientProps {
-  reservations?: Reservation[];
+  reservations?: SafeReservation[];
   listing: SafeListing & {
     user: SafeUser;
   };
@@ -40,7 +39,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
     let dates: Date[] = [];
     reservations.forEach((reservation: any) => {
       const range = eachDayOfInterval({
-        start: new Date(reservation.stertDate),
+        start: new Date(reservation.StertDate),
         end: new Date(reservation.endDate),
       });
       dates = [...dates, ...range];

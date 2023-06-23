@@ -49,7 +49,7 @@ const Categories = ({ index }: { index: number }) => {
           icon={categoryObj.icon}
           // selected={category === categoryObj.label}
         />
-        xd
+        Explore more
       </div>
     </Container>
   );
