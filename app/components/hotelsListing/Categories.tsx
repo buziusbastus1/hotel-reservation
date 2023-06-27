@@ -48,7 +48,6 @@ const Categories = ({ index }: { index: number }) => {
           icon={categoryObj.icon}
           // selected={category === categoryObj.label}
         />
-        {/* <div className="px-1">Explore more</div> */}
       </div>
     </Container>
   );

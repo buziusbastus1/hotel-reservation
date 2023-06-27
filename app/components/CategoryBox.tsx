@@ -1,4 +1,5 @@
 "use client";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { IconType } from "react-icons";
 
@@ -21,9 +22,13 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
   const handleMouseLeave = () => {
     setIsHovered(false);
   };
+
+  const router = useRouter();
+
   return (
     <>
       <div
+        onClick={() => router.push("/explore")}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         className={`
