@@ -30,7 +30,7 @@ const Slider = ({ children }) => {
   const swipeOffset = isMobile ? 2 : 0;
 
   return (
-    <div className="relative w-full overflow-hidden ">
+    <div className="relative w-full overflow-hidden sm:mb-4 md:mb-6">
       <div
         className="flex transition-transform duration-300"
         style={{

@@ -39,7 +39,6 @@ const Categories = ({ index }: { index: number }) => {
           flex 
           flex-row 
           items-center 
-          justify-between
           overflow-x-auto
         "
       >
@@ -49,7 +48,7 @@ const Categories = ({ index }: { index: number }) => {
           icon={categoryObj.icon}
           // selected={category === categoryObj.label}
         />
-        Explore more
+        {/* <div className="px-1">Explore more</div> */}
       </div>
     </Container>
   );
