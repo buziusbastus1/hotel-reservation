@@ -26,10 +26,10 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
     <div className="relative">
       <div className="flex flex-row items-center gap-3">
         <div
-          onClick={() => {}}
+          onClick={() => router.push("/")}
           className="hidden md:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer"
         >
-          home
+          Home
         </div>
         <div
           onClick={toggleOpen}
@@ -54,7 +54,6 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
                   onClick={() => router.push("/favorites")}
                   label="My Favorites"
                 />
-                <MenuItem onClick={() => {}} label="Home" />
                 <MenuItem onClick={() => signOut()} label="Logout" />
               </>
             ) : (

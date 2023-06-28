@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 
-import useCountries from "@/app/hooks/useCountries";
+// import useCountries from "@/app/hooks/useCountries";
 import { SafeUser } from "@/app/types";
 
 import Heading from "../Heading";
@@ -23,16 +23,13 @@ const HotelHead: React.FC<HotelHeadProps> = ({
   id,
   currentUser,
 }) => {
-  const { getByValue } = useCountries();
+  // const { getByValue } = useCountries();
 
-  const location = getByValue(locationValue);
-
+  // const location = getByValue(locationValue);
+  const [country, city] = locationValue?.split(",") || [];
   return (
     <>
-      <Heading
-        title={title}
-        subtitle={`${location?.region}, ${location?.label}`}
-      />
+      <Heading title={title} subtitle={`${country}, ${city}`} />
       <div
         className="
           w-full

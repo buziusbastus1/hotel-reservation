@@ -4,7 +4,6 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useCallback, useMemo } from "react";
 
-import useCountries from "@/app/hooks/useCountries";
 import { SafeListing, SafeReservation, SafeUser } from "@/app/types";
 
 import HeartButton from "../HeartButton";
@@ -32,9 +31,8 @@ const HotelCard: React.FC<HotelCardProps> = ({
   currentUser,
 }) => {
   const router = useRouter();
-  const { getByValue } = useCountries();
 
-  const location = getByValue(data.locationValue);
+  const [country, city] = data.locationValue?.split(",") || [];
 
   const handleCancel = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -108,7 +106,7 @@ const HotelCard: React.FC<HotelCardProps> = ({
           </div>
         </div>
         <div className="font-semibold text-lg">
-          {location?.region}, {location?.label}
+          {country}, {city}
         </div>
         <div className="font-light text-neutral-500">
           {reservationDate || data.category}

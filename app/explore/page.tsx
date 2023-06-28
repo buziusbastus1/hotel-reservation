@@ -1,13 +1,21 @@
+import getCurrentUser from "../actions/getCurrentUser";
 import getFavoriteListings from "../actions/getFavoriteListings";
+import getListingById from "../actions/getListingById";
 import ClientOnly from "../components/ClientOnly";
 import EmptyState from "../components/EmptyState";
 import ExploreClient from "./ExploreClient";
 
 const TripsPage = async () => {
-  const listings = await getFavoriteListings();
+  const listing = await getListingById(params);
+  const currentUser = await getCurrentUser();
   return (
     <ClientOnly>
-      <ExploreClient listings={listings} />
+      <ExploreClient
+        // listings={listings}
+        listing={listing}
+        reservations={reservations}
+        currentUser={currentUser}
+      />
     </ClientOnly>
   );
 };
