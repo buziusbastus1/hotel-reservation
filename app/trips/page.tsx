@@ -22,7 +22,10 @@ const TripsPage = async () => {
   if (reservations.length === 0) {
     return (
       <ClientOnly>
-        <EmptyState title="no trp" subtitle="looks" />
+        <EmptyState
+          title="No trips"
+          subtitle="Looks like you haven't booked any hotel yet"
+        />
       </ClientOnly>
     );
   }

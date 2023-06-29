@@ -42,7 +42,7 @@ const TripsClient: React.FunctionComponent<TripsClientProps> = ({
 
   return (
     <Container>
-      <Heading title="trips" subtitle="where" />
+      <Heading title="Trips" subtitle="Your incoming trips" />
       <div
         className="
           mt-10

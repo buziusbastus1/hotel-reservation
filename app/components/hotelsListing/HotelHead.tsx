@@ -23,9 +23,6 @@ const HotelHead: React.FC<HotelHeadProps> = ({
   id,
   currentUser,
 }) => {
-  // const { getByValue } = useCountries();
-
-  // const location = getByValue(locationValue);
   const [country, city] = locationValue?.split(",") || [];
   return (
     <>

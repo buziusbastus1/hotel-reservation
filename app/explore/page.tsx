@@ -6,15 +6,15 @@ import EmptyState from "../components/EmptyState";
 import ExploreClient from "./ExploreClient";
 
 const TripsPage = async () => {
-  const listing = await getListingById(params);
-  const currentUser = await getCurrentUser();
+  // const listing = await getListingById(params);
+  // const currentUser = await getCurrentUser();
   return (
     <ClientOnly>
       <ExploreClient
-        // listings={listings}
-        listing={listing}
-        reservations={reservations}
-        currentUser={currentUser}
+      // listings={listings}
+      // listing={listing}
+      // reservations={reservations}
+      // currentUser={currentUser}
       />
     </ClientOnly>
   );
