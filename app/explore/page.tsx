@@ -11,10 +11,13 @@ const TripsPage = async () => {
   return (
     <ClientOnly>
       <ExploreClient
-      // listings={listings}
-      // listing={listing}
-      // reservations={reservations}
-      // currentUser={currentUser}
+        icon={category.icon}
+        label={category?.label}
+        description={category?.description}
+        // listings={listings}
+        // listing={listing}
+        // reservations={reservations}
+        // currentUser={currentUser}
       />
     </ClientOnly>
   );
