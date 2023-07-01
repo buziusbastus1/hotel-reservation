@@ -26,6 +26,7 @@ const ExploreClient: React.FunctionComponent<ExploreClientProps> = ({
   category,
 }) => {
   // const listings = getListings();
+
   // const currentUser = getCurrentUser();
   return (
     <Container>
