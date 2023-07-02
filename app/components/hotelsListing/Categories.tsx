@@ -23,7 +23,7 @@ export const categories = [
 const Categories = ({ index }: { index: number }) => {
   const categoryObj = categories[index];
 
-  const params = useSearchParams();
+  // const params = useSearchParams();
   // const category = params?.get("category");
   const pathname = usePathname();
   const isMainPage = pathname === "/";

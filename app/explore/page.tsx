@@ -1,27 +1,34 @@
 import getCurrentUser from "../actions/getCurrentUser";
 import getFavoriteListings from "../actions/getFavoriteListings";
 import getListingById from "../actions/getListingById";
+import getListings, { IListingsParams } from "../actions/getListings";
 import ClientOnly from "../components/ClientOnly";
 import EmptyState from "../components/EmptyState";
 import { categories } from "../components/hotelsListing/Categories";
+import { SafeListing } from "../types";
 import ExploreClient from "./ExploreClient";
-
-const TripsPage = async () => {
+interface FavoritesClientProps {
+  listings: SafeListing[];
+  searchParams: IListingsParams;
+}
+const TripsPage = async ({ searchParams, listings }: FavoritesClientProps) => {
   // const listing = await getListingById(params);
-  // const currentUser = await getCurrentUser();
+  // const currentUser = await getCurrent
+  // const listings = await getListings(searchParams);
+  // const searchParams: IListingsParams = {};
   return (
-    <ClientOnly>
-      <ExploreClient
-        category={categories}
-        // icon={category.icon}
-        // label={category?.label}
-        // description={category?.description}
-        // listings={listings}
-        // listing={listing}
-        // reservations={reservations}
-        // currentUser={currentUser}
-      />
-    </ClientOnly>
+    <ExploreClient
+      searchParams={searchParams}
+      listings={listings}
+      // category={categories}
+      // icon={category.icon}
+      // label={category?.label}
+      // description={category?.description}
+      // listings={listings}
+      // listing={listing}
+      // reservations={reservations}
+      // currentUser={currentUser}
+    />
   );
 };
 export default TripsPage;

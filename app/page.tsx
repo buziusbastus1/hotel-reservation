@@ -1,14 +1,18 @@
 import Container from "./components/Container";
 import getCurrentUser from "./actions/getCurrentUser";
-import getListings from "./actions/getListings";
+import getListings, { IListingsParams } from "./actions/getListings";
 import ClientOnly from "./components/ClientOnly";
 import EmmptyState from "./components/EmptyState";
 import HotelCard from "./components/hotelsListing/HotelCard";
 import Categories from "./components/hotelsListing/Categories";
 import Slider from "./components/Slider";
 
-export default async function Home() {
-  const listings = await getListings();
+interface HomeProps {
+  searchParams: IListingsParams;
+}
+
+const Home = async ({ searchParams }: HomeProps) => {
+  const listings = await getListings(searchParams);
   const currentUser = await getCurrentUser();
 
   const firstCategory = "Beach";
@@ -34,7 +38,7 @@ export default async function Home() {
       <Container>
         <Categories index={0} />
         <Slider>
-          {filteredListingsFirst.map((listing) => (
+          {filteredListingsFirst.map((listing: any) => (
             <HotelCard
               currentUser={currentUser}
               key={listing.id}
@@ -44,7 +48,7 @@ export default async function Home() {
         </Slider>
         <Categories index={1} />
         <Slider>
-          {filteredListingsSecond.map((listing) => (
+          {filteredListingsSecond.map((listing: any) => (
             <HotelCard
               currentUser={currentUser}
               key={listing.id}
@@ -55,6 +59,6 @@ export default async function Home() {
       </Container>
     </ClientOnly>
   );
-}
-
+};
+export default Home;
 // <div>{listing.title}</div>
