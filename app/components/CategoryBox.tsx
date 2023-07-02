@@ -49,7 +49,6 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
         <Icon size={26} />
         <div className="font-medium text-sm">{label}</div>
       </div>
-      {/* <div className="px-1">Explore more</div> */}
       {isHovered && <div className="px-2 ">Explore more</div>}
     </>
   );

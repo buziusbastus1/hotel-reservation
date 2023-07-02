@@ -6,7 +6,7 @@ import { SafeUser } from "@/app/types";
 import Avatar from "../Avatar";
 import CategoryView from "./HotelCategory";
 
-interface ListingInfoProps {
+interface HotelInfoProps {
   user: SafeUser;
   description: string;
   guestCount: number;
@@ -21,7 +21,7 @@ interface ListingInfoProps {
     | undefined;
 }
 
-const ListingInfo: React.FC<ListingInfoProps> = ({
+const HotelInfo: React.FC<HotelInfoProps> = ({
   user,
   description,
   guestCount,
@@ -80,4 +80,4 @@ const ListingInfo: React.FC<ListingInfoProps> = ({
   );
 };
 
-export default ListingInfo;
+export default HotelInfo;

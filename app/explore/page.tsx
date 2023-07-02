@@ -3,6 +3,7 @@ import getFavoriteListings from "../actions/getFavoriteListings";
 import getListingById from "../actions/getListingById";
 import ClientOnly from "../components/ClientOnly";
 import EmptyState from "../components/EmptyState";
+import { categories } from "../components/hotelsListing/Categories";
 import ExploreClient from "./ExploreClient";
 
 const TripsPage = async () => {
@@ -11,9 +12,10 @@ const TripsPage = async () => {
   return (
     <ClientOnly>
       <ExploreClient
-        icon={category.icon}
-        label={category?.label}
-        description={category?.description}
+        category={categories}
+        // icon={category.icon}
+        // label={category?.label}
+        // description={category?.description}
         // listings={listings}
         // listing={listing}
         // reservations={reservations}
