@@ -15,20 +15,10 @@ import Slider from "../components/Slider";
 import Categories from "../components/hotelsListing/Categories";
 
 interface ExploreClientProps {
-  // listings: SafeListing[];
-  //   category:
-  //     | {
-  //         icon: IconType;
-  //         label: string;
-  //         description: string;
-  //       }
-  //     | undefined;
-  // searchParams: IListingsParams;
   listings: any[];
   currentUser?: SafeUser | null;
 }
 const ExploreClient: React.FC<ExploreClientProps> = ({
-  // searchParams,
   listings,
   currentUser,
 }) => {

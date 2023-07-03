@@ -23,10 +23,6 @@ const TripsPage = async () => {
       // category={categories}
       // icon={category.icon}
       // label={category?.label}
-      // description={category?.description}
-      // listings={listings}
-      // listing={listing}
-      // reservations={reservations}
     />
   );
 };
