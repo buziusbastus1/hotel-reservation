@@ -22,12 +22,12 @@ export const categories = [
 const Categories = ({ index }: { index: number }) => {
   const categoryObj = categories[index];
 
-  const pathname = usePathname();
-  const isMainPage = pathname === "/";
+  // const pathname = usePathname();
+  // const isMainPage = pathname === "/";
 
-  if (!isMainPage) {
-    return null;
-  }
+  // if (!isMainPage) {
+  //   return null;
+  // }
 
   return (
     <Container>

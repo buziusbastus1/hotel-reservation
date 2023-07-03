@@ -28,8 +28,8 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
   return (
     <>
       <div
-        onClick={() => router.push("/explore")}
-        // onClick={() => router.push(`/${label}`)}
+        // onClick={() => router.push("/explore")}
+        onClick={() => router.push(`/explore/?${label}`)}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         className={`

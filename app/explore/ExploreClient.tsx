@@ -1,6 +1,6 @@
 "use client";
 import { useCallback, useState } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import Container from "../components/Container";
 import Heading from "../components/Heading";
 import HotelCard from "../components/hotelsListing/HotelCard";
@@ -24,14 +24,16 @@ const ExploreClient: React.FC<ExploreClientProps> = ({
 }) => {
   const firstCategory = "Beach";
   const secondCategory = "Mountains";
-
   // const filteredListingsFirst = listings.filter(
   //   (listing) => listing.category === firstCategory
   // );
+  const pathname = useSearchParams()?.toString()?.replace("=", "");
 
-  const filteredListingsSecond = listings.filter(
-    (listing) => listing.category === secondCategory
+  const filteredListings = listings.filter(
+    (listing) => listing.category === pathname
   );
+
+  // const filteredListings = pathname;
 
   return (
     <>
@@ -51,7 +53,7 @@ const ExploreClient: React.FC<ExploreClientProps> = ({
         "
         >
           {" "}
-          {filteredListingsSecond.map((listing: any) => (
+          {filteredListings.map((listing: any) => (
             <HotelCard
               currentUser={currentUser}
               key={listing.id}
@@ -59,6 +61,7 @@ const ExploreClient: React.FC<ExploreClientProps> = ({
             />
           ))}
         </div>
+        <p>Current pathname: {pathname}</p>
       </Container>
     </>
   );
