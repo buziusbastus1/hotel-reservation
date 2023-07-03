@@ -1,8 +1,6 @@
 import getCurrentUser from "../actions/getCurrentUser";
 import getFavoriteListings from "../actions/getFavoriteListings";
-import getListingById from "../actions/getListingById";
 import getListings, { IListingsParams } from "../actions/getListings";
-import ClientOnly from "../components/ClientOnly";
 import EmptyState from "../components/EmptyState";
 import { categories } from "../components/hotelsListing/Categories";
 import { SafeListing } from "../types";
@@ -11,15 +9,17 @@ interface FavoritesClientProps {
   listings: SafeListing[];
   searchParams: IListingsParams;
 }
-const TripsPage = async ({ searchParams, listings }: FavoritesClientProps) => {
-  // const listing = await getListingById(params);
+const TripsPage = async () => {
   // const currentUser = await getCurrent
-  // const listings = await getListings(searchParams);
-  // const searchParams: IListingsParams = {};
+  const searchParams: IListingsParams = {};
+  const listings = await getListings(searchParams);
+
+  // const listings = await getFavoriteListings();
+  const currentUser = await getCurrentUser();
   return (
     <ExploreClient
-      searchParams={searchParams}
       listings={listings}
+      currentUser={currentUser}
       // category={categories}
       // icon={category.icon}
       // label={category?.label}
@@ -27,7 +27,6 @@ const TripsPage = async ({ searchParams, listings }: FavoritesClientProps) => {
       // listings={listings}
       // listing={listing}
       // reservations={reservations}
-      // currentUser={currentUser}
     />
   );
 };

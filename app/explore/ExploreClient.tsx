@@ -23,12 +23,12 @@ interface ExploreClientProps {
   //         description: string;
   //       }
   //     | undefined;
-  searchParams: IListingsParams;
+  // searchParams: IListingsParams;
   listings: any[];
   currentUser?: SafeUser | null;
 }
 const ExploreClient: React.FC<ExploreClientProps> = ({
-  searchParams,
+  // searchParams,
   listings,
   currentUser,
 }) => {
@@ -39,15 +39,37 @@ const ExploreClient: React.FC<ExploreClientProps> = ({
   //   (listing) => listing.category === firstCategory
   // );
 
-  // const filteredListingsSecond = listings.filter(
-  //   (listing) => listing.category === secondCategory
-  // );
+  const filteredListingsSecond = listings.filter(
+    (listing) => listing.category === secondCategory
+  );
 
   return (
     <>
-      {listings.map((listing: any) => (
-        <HotelCard currentUser={currentUser} key={listing.id} data={listing} />
-      ))}
+      <Container>
+        <Heading title="trips" subtitle="where" />
+        <div
+          className="
+          mt-10
+          grid
+          grid-cols-1
+          sm:grid-cols-2
+          md:grid-cols-3
+          lg:grid-cols-4
+          xl:grid-cols-5
+          2xl:grid-cols-6
+          gap-8
+        "
+        >
+          {" "}
+          {filteredListingsSecond.map((listing: any) => (
+            <HotelCard
+              currentUser={currentUser}
+              key={listing.id}
+              data={listing}
+            />
+          ))}
+        </div>
+      </Container>
     </>
   );
 };
