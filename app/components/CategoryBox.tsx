@@ -2,6 +2,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { IconType } from "react-icons";
+import { AiOutlineArrowRight } from "react-icons/ai";
 
 interface CategoryBoxProps {
   icon: IconType;
@@ -28,7 +29,6 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
   return (
     <>
       <div
-        // onClick={() => router.push("/explore")}
         onClick={() => router.push(`/explore/?${label}`)}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
@@ -39,7 +39,6 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
         justify-center 
         gap-2
         p-3
-        border-b-2
         hover:text-neutral-800
         transition
         cursor-pointer
@@ -50,7 +49,12 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
         <Icon size={26} />
         <div className="font-medium text-sm">{label}</div>
       </div>
-      {isHovered && <div className="px-2 ">Explore more</div>}
+      {isHovered && (
+        <div className="px-2 flex items-center">
+          Explore more
+          <AiOutlineArrowRight className="mx-2" />
+        </div>
+      )}
     </>
   );
 };

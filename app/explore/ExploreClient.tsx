@@ -22,23 +22,19 @@ const ExploreClient: React.FC<ExploreClientProps> = ({
   listings,
   currentUser,
 }) => {
-  const firstCategory = "Beach";
-  const secondCategory = "Mountains";
-  // const filteredListingsFirst = listings.filter(
-  //   (listing) => listing.category === firstCategory
-  // );
-  const pathname = useSearchParams()?.toString()?.replace("=", "");
+  const pathname = useSearchParams()?.toString()?.replace(/=/g, "");
 
   const filteredListings = listings.filter(
     (listing) => listing.category === pathname
   );
 
-  // const filteredListings = pathname;
-
   return (
     <>
       <Container>
-        <Heading title="trips" subtitle="where" />
+        <Heading
+          title="Explore"
+          subtitle={`Hotels with the ${pathname} category`}
+        />
         <div
           className="
           mt-10
@@ -61,7 +57,6 @@ const ExploreClient: React.FC<ExploreClientProps> = ({
             />
           ))}
         </div>
-        <p>Current pathname: {pathname}</p>
       </Container>
     </>
   );

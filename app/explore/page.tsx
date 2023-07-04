@@ -5,16 +5,11 @@ import EmptyState from "../components/EmptyState";
 import { categories } from "../components/hotelsListing/Categories";
 import { SafeListing } from "../types";
 import ExploreClient from "./ExploreClient";
-interface FavoritesClientProps {
-  listings: SafeListing[];
-  searchParams: IListingsParams;
-}
+
 const TripsPage = async () => {
-  // const currentUser = await getCurrent
   const searchParams: IListingsParams = {};
   const listings = await getListings(searchParams);
 
-  // const listings = await getFavoriteListings();
   const currentUser = await getCurrentUser();
   return (
     <ExploreClient

@@ -27,7 +27,7 @@ const Slider = ({ children }) => {
   };
 
   const swipesPerScreen = isMobile ? 1.5 : 3;
-  const swipeOffset = isMobile ? 2 : 0;
+  // const swipeOffset = isMobile ? 2 : 0;
 
   return (
     <div className="relative w-full overflow-hidden sm:mb-4 md:mb-6">
@@ -38,8 +38,7 @@ const Slider = ({ children }) => {
           width: `${children.length * 50}%`,
         }}
       >
-        {/* {children} */}
-        {children.map((child, index) => (
+        {children.map((child, index: number) => (
           <div
             key={index}
             className="w-full flex-shrink-0"
@@ -57,20 +56,17 @@ const Slider = ({ children }) => {
       </div>
 
       <button
-        className={`absolute top-1/2 transform -translate-y-1/2 left-4 bg-gray-500 text-white font-bold py-2 px-4 rounded-full focus:outline-none ${
-          currentIndex === 0 ? "hidden" : ""
-        }`}
+        className={`absolute top-1/2 transform -translate-y-1/2 left-4 bg-gray-500 text-white font-bold py-2 px-4 rounded-full focus:outline-none 
+        ${currentIndex === 0 ? "hidden" : ""}`}
         onClick={handlePrev}
       >
         Previous
       </button>
 
       <button
-        className={`absolute top-1/2 transform -translate-y-1/2 right-4 bg-gray-500 text-white font-bold py-2 px-4 rounded-full focus:outline-none ${
-          // currentIndex >= Math.ceil(children.length / (isMobile ? 2 : 4))
-          currentIndex >=
-          // Math.ceil(children.length / swipesPerScreen) - 1 + swipeOffset
-          Math.ceil(children.length / swipesPerScreen) - 1
+        className={`absolute top-1/2 transform -translate-y-1/2 right-4 bg-gray-500 text-white font-bold py-2 px-4 rounded-full focus:outline-none 
+        ${
+          currentIndex >= Math.ceil(children.length / swipesPerScreen) - 1
             ? "hidden"
             : ""
         }`}

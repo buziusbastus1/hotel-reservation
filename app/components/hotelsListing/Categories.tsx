@@ -22,12 +22,12 @@ export const categories = [
 const Categories = ({ index }: { index: number }) => {
   const categoryObj = categories[index];
 
-  // const pathname = usePathname();
-  // const isMainPage = pathname === "/";
+  const pathname = usePathname();
+  const isMainPage = pathname === "/";
 
-  // if (!isMainPage) {
-  //   return null;
-  // }
+  if (!isMainPage) {
+    return null;
+  }
 
   return (
     <Container>
@@ -37,13 +37,13 @@ const Categories = ({ index }: { index: number }) => {
           flex-row 
           items-center 
           overflow-x-auto
+          mb-3
         "
       >
         <CategoryBox
           key={categoryObj.label}
           label={categoryObj.label}
           icon={categoryObj.icon}
-          // selected={category === categoryObj.label}
         />
       </div>
     </Container>
