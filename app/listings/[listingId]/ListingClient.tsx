@@ -47,7 +47,6 @@ const ListingClient: React.FC<ListingClientProps> = ({
 
     return dates;
   }, [reservations]);
-  // return <div>list</div>;
 
   const [isLoading, setIsLoading] = useState(false);
   const [totalPrice, setTotalPrice] = useState(listing.price);
@@ -99,56 +98,38 @@ const ListingClient: React.FC<ListingClientProps> = ({
 
   return (
     <Container>
-      <div
-        className="
-          max-w-screen-lg
-          mx-auto
-        "
-      >
-        <div className="flex flex-col gap-6">
-          <HotelHead
-            title={listing.title}
-            imageSrc={listing.imageSrc}
-            locationValue={listing.locationValue}
-            id={listing.id}
-            currentUser={currentUser}
-          />
-          <div
-            className="
-              grid
-              grid-cols-1
-              md:grid-cols-7
-              md:gap-10
-              mt-6
-            "
-          >
-            <HotelInfo
-              user={listing.user}
-              category={category}
-              description={listing.description}
-              roomCount={listing.roomCount}
-              guestCount={listing.guestCount}
-              bathroomCount={listing.bathroomCount}
-            />
-            <div className="order-first mb-10 md:order-last md:col-span-3">
-              <HotelReservation
-                price={listing.price}
-                totalPrice={totalPrice}
-                onChangeDate={(value) => setDateRange(value)}
-                dateRange={dateRange}
-                onSubmit={onCreateReservation}
-                disabled={isLoading}
-                disabledDates={disabledDates}
+      <div className="flex flex-col gap-6">
+        <div className="flex flex-col md:flex-row md:gap-10 mt-6">
+          <div className="w-full md:w-2/3">
+            <div>
+              <HotelHead
+                title={listing.title}
+                imageSrc={listing.imageSrc}
+                locationValue={listing.locationValue}
+                id={listing.id}
+                currentUser={currentUser}
               />
             </div>
-            <div
-              className="
-                order-first
-                mb-10
-                md:order-last
-                md:col-span-3
-              "
-            ></div>
+            <div>
+              <HotelInfo
+                category={category}
+                description={listing.description}
+                roomCount={listing.roomCount}
+                guestCount={listing.guestCount}
+                bathroomCount={listing.bathroomCount}
+              />
+            </div>
+          </div>
+          <div className="w-full md:w-1/3 mt-6 md:mt-0">
+            <HotelReservation
+              price={listing.price}
+              totalPrice={totalPrice}
+              onChangeDate={(value) => setDateRange(value)}
+              dateRange={dateRange}
+              onSubmit={onCreateReservation}
+              disabled={isLoading}
+              disabledDates={disabledDates}
+            />
           </div>
         </div>
       </div>

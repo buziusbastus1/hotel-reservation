@@ -3,11 +3,9 @@
 import { IconType } from "react-icons";
 import { SafeUser } from "@/app/types";
 
-import Avatar from "../Avatar";
 import CategoryView from "./HotelCategory";
 
 interface HotelInfoProps {
-  user: SafeUser;
   description: string;
   guestCount: number;
   roomCount: number;
@@ -22,7 +20,6 @@ interface HotelInfoProps {
 }
 
 const HotelInfo: React.FC<HotelInfoProps> = ({
-  user,
   description,
   guestCount,
   roomCount,
@@ -30,7 +27,7 @@ const HotelInfo: React.FC<HotelInfoProps> = ({
   category,
 }) => {
   return (
-    <div className="col-span-4 flex flex-col gap-8">
+    <div className="col-span-4 flex flex-col gap-8 mt-4">
       <div className="flex flex-col gap-2">
         <div
           className="
@@ -42,8 +39,7 @@ const HotelInfo: React.FC<HotelInfoProps> = ({
             gap-2
           "
         >
-          <div>Hosted by {user?.name}</div>
-          <Avatar src={user?.image} />
+          <div>Hotel facilities</div>
         </div>
         <div
           className="
