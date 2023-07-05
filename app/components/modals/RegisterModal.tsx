@@ -2,11 +2,12 @@
 import axios from "axios";
 import { useCallback, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+
 import useRegisterModal from "../../hooks/useRegisterModal";
 import Modal from "./Modal";
 import Heading from "../Heading";
 import Input from "../inputs/input";
-import toast from "react-hot-toast";
 import useLoginModal from "@/app/hooks/useLoginModal";
 
 const RegisterModal = () => {
@@ -49,7 +50,10 @@ const RegisterModal = () => {
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
-      <Heading title="welcome" subtitle="create"></Heading>
+      <Heading
+        title="Welcome to Hotel Reservation"
+        subtitle="Create an account"
+      ></Heading>
       <Input
         id="email"
         label="Email"
@@ -74,38 +78,36 @@ const RegisterModal = () => {
         register={register}
         errors={errors}
         required
+        minLength={5}
       />
     </div>
   );
   const footerContent = (
-    <div>
+    <div className="flex flex-col gap-4 mt-3">
       <hr />
-      {/* <Button
-        outline
-        label="Google Register"
-        icon={FcGoogle}
-        onClick={() => signIn("google")}
-      ></Button>
-      <Button
-        outline
-        label="Github Register"
-        icon={AiFillGithub}
-        onClick={() => signIn("github")}
-      /> */}
-      <p>
-        Already have an account?
-        <span
-          onClick={onToggle}
-          className="
+      <div
+        className="
+          text-neutral-500 
+          text-center 
+          mt-4 
+          font-light
+        "
+      >
+        <p>
+          Already have an account?
+          <span
+            onClick={onToggle}
+            className="
               text-neutral-800
               cursor-pointer 
               hover:underline
             "
-        >
-          {" "}
-          Log in
-        </span>
-      </p>
+          >
+            {" "}
+            Log in
+          </span>
+        </p>
+      </div>
     </div>
   );
   return (

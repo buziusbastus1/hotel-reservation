@@ -2,12 +2,13 @@
 import { signIn } from "next-auth/react";
 import { useCallback, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
+import { useRouter } from "next/navigation";
+
 import useLoginModal from "@/app/hooks/useLoginModal";
 import Modal from "./Modal";
 import Heading from "../Heading";
 import Input from "../inputs/input";
-import { toast } from "react-hot-toast";
-import { useRouter } from "next/navigation";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 
 const LoginModal = () => {
@@ -70,7 +71,7 @@ const LoginModal = () => {
         disabled={isLoading}
         register={register}
         errors={errors}
-        // minLength={5}
+        minLength={5}
         required
       />
     </div>
