@@ -1,18 +1,18 @@
 import Container from "./components/Container";
 import getCurrentUser from "./actions/getCurrentUser";
-import getListings, { IListingsParams } from "./actions/getListings";
+import getListings from "./actions/getListings";
 import ClientOnly from "./components/ClientOnly";
 import EmmptyState from "./components/EmptyState";
 import HotelCard from "./components/hotelsListing/HotelCard";
 import Categories from "./components/hotelsListing/Categories";
 import Slider from "./components/Slider";
 
-interface HomeProps {
-  searchParams: IListingsParams;
-}
+// interface HomeProps {
+//   searchParams: IListingsParams;
+// }
 
-const Home = async ({ searchParams }: HomeProps) => {
-  const listings = await getListings(searchParams);
+const Home = async () => {
+  const listings = await getListings();
   const currentUser = await getCurrentUser();
 
   const firstCategory = "Beach";

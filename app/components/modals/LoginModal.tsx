@@ -1,16 +1,12 @@
 "use client";
 import { signIn } from "next-auth/react";
-import { AiFillGithub } from "react-icons/ai";
-import { FcGoogle } from "react-icons/fc";
 import { useCallback, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import useLoginModal from "@/app/hooks/useLoginModal";
 import Modal from "./Modal";
-
 import Heading from "../Heading";
 import Input from "../inputs/input";
 import { toast } from "react-hot-toast";
-import Button from "../Button";
 import { useRouter } from "next/navigation";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 
@@ -58,7 +54,7 @@ const LoginModal = () => {
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
-      <Heading title="welcome back" subtitle="Log in to your account"></Heading>
+      <Heading title="Welcome back" subtitle="Log in to your account"></Heading>
       <Input
         id="email"
         label="Email"
@@ -74,6 +70,7 @@ const LoginModal = () => {
         disabled={isLoading}
         register={register}
         errors={errors}
+        // minLength={5}
         required
       />
     </div>
@@ -81,24 +78,12 @@ const LoginModal = () => {
   const footerContent = (
     <div>
       <hr />
-      <Button
-        outline
-        label="Google Login"
-        icon={FcGoogle}
-        onClick={() => signIn("google")}
-      ></Button>
-      <Button
-        outline
-        label="Github Login"
-        icon={AiFillGithub}
-        onClick={() => signIn("github")}
-      />
       <div
         className="
       text-neutral-500 text-center mt-4 font-light"
       >
         <p>
-          First time using Airbnb?
+          First time using Hotel Reservation?
           <span
             onClick={onToggle}
             className="

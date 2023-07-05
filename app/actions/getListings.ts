@@ -1,23 +1,16 @@
 import prisma from "@/app/libs/prismadb";
 
-export interface IListingsParams {
-  category?: string;
-}
+// export interface IListingsParams {
+//   category?: string;
+// }
 
-export default async function getListings(params: IListingsParams) {
+export default async function getListings() {
   try {
-    const category = params;
-    let query: any = {};
 
-    if (category) {
-      query.category = category;
-    }
-    
     const listings = await prisma.listing.findMany({
-      where: query,
       orderBy: {
         createdAt: "desc",
-      },
+      }
     });
 
     const safeListings = listings.map((listing) => ({
