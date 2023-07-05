@@ -1,5 +1,4 @@
 "use client";
-// import { CgProfile } from "react-icons/cg";
 import Image from "next/image";
 
 interface AvatarProps {
@@ -9,7 +8,6 @@ const Avatar: React.FC<AvatarProps> = ({ src }) => {
   return (
     <Image
       className="rounded-full"
-      // size={30}
       alt="Avatar"
       width={30}
       height={30}
