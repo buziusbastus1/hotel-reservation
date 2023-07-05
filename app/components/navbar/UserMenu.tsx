@@ -8,7 +8,7 @@ import useRegisterModal from "@/app/hooks/useRegisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
 import { signOut } from "next-auth/react";
 import { SafeUser } from "@/app/types";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 interface UserMenuProps {
   currentUser?: SafeUser | null;
@@ -18,10 +18,14 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
   const router = useRouter();
   const loginModal = useLoginModal();
   const [isOpen, setIsopen] = useState(false);
+  const [home, setHome] = useState(false);
 
   const toggleOpen = useCallback(() => {
     setIsopen((value) => !value);
   }, []);
+
+  const pathname = usePathname();
+  const isMainPage = pathname === "/";
   return (
     <div className="relative">
       <div className="flex flex-row items-center gap-3">

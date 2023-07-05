@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { TbBeach } from "react-icons/tb";
 import { GiMountainRoad } from "react-icons/gi";
 import CategoryBox from "../CategoryBox";

@@ -31,7 +31,7 @@ const HotelHead: React.FC<HotelHeadProps> = ({
           h-[60vh]
           overflow-hidden 
           rounded-xl
-          relative
+          relative mt-4
         "
       >
         <Image
