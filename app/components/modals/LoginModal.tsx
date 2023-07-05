@@ -12,10 +12,12 @@ import Input from "../inputs/input";
 import { toast } from "react-hot-toast";
 import Button from "../Button";
 import { useRouter } from "next/navigation";
+import useRegisterModal from "@/app/hooks/useRegisterModal";
 
 const LoginModal = () => {
   const router = useRouter();
   const loginModal = useLoginModal();
+  const registerModal = useRegisterModal();
   const [isLoading, setIsLoading] = useState(false);
 
   const {
@@ -48,9 +50,15 @@ const LoginModal = () => {
       }
     });
   };
+
+  const onToggle = useCallback(() => {
+    loginModal.onClose();
+    registerModal.onOpen();
+  }, [loginModal, registerModal]);
+
   const bodyContent = (
     <div className="flex flex-col gap-4">
-      <Heading title="welcome back" subtitle="Log in to your acc"></Heading>
+      <Heading title="welcome back" subtitle="Log in to your account"></Heading>
       <Input
         id="email"
         label="Email"
@@ -75,26 +83,34 @@ const LoginModal = () => {
       <hr />
       <Button
         outline
-        label="Google Register"
+        label="Google Login"
         icon={FcGoogle}
-        onClick={() => {}}
+        onClick={() => signIn("google")}
       ></Button>
       <Button
         outline
-        label="Github Register"
+        label="Github Login"
         icon={AiFillGithub}
-        onClick={() => {}}
+        onClick={() => signIn("github")}
       />
-      <div className="text-neutral-500 text-center mt-4 font-light">
-        <div className=" justify-center flex flex-row items-center gap-2">
-          <div>Already have?</div>
-          <div
-            onClick={loginModal.onClose}
-            className="text-neutral-800 cursor-pointer hover:underline"
+      <div
+        className="
+      text-neutral-500 text-center mt-4 font-light"
+      >
+        <p>
+          First time using Airbnb?
+          <span
+            onClick={onToggle}
+            className="
+              text-neutral-800
+              cursor-pointer 
+              hover:underline
+            "
           >
-            Log in
-          </div>
-        </div>
+            {" "}
+            Create an account
+          </span>
+        </p>
       </div>
     </div>
   );
@@ -107,6 +123,7 @@ const LoginModal = () => {
       onClose={loginModal.onClose}
       onSubmit={handleSubmit(onSubmit)}
       body={bodyContent}
+      footer={footerContent}
     />
   );
 };
