@@ -18,7 +18,6 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
   const router = useRouter();
   const loginModal = useLoginModal();
   const [isOpen, setIsopen] = useState(false);
-  const [home, setHome] = useState(false);
 
   const toggleOpen = useCallback(() => {
     setIsopen((value) => !value);
@@ -32,7 +31,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
         {!isMainPage && (
           <div
             onClick={() => router.push("/")}
-            className="hidden md:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer"
+            className="block border-neutral-200 border-[1px] text-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer"
           >
             Home
           </div>
