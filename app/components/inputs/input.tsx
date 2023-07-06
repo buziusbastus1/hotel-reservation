@@ -53,9 +53,7 @@ const Input: React.FC<InputProps> = ({
           ${formatPrice ? "pl-9" : "pl-4"}
           ${formatPrice ? "border-rose-500" : "border-neutral-300"}
           ${formatPrice ? "focus:border-rose-500" : "focus:border-black"}
-          ${
-            errorMessage ? "border-rose-500" : ""
-          } // Add error styling if there is an error message
+          ${errorMessage ? "border-rose-500" : ""}
         `}
       />
       <label
@@ -66,9 +64,7 @@ const Input: React.FC<InputProps> = ({
           peer-focus:scale-75
           peer-focus:translate-y-4
           ${formatPrice ? "left-9" : "left-4"}
-          ${
-            errorMessage ? "text-rose-500" : "text-zinc-400"
-          } // Add error color if there is an error message
+          ${errorMessage ? "text-rose-500" : "text-zinc-400"}
         `}
       >
         {label}
