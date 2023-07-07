@@ -10,9 +10,9 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
   console.log({ currentUser });
   return (
     <div className="fixed w-full bg-white z-10 shadow-sm">
-      <div className="py-4 border-b-[1px]">
+      <div className="py-4  border-b-[1px]">
         <Container>
-          <div className="flex flex-row items-center justify-between gap-3 md:gap-0">
+          <div className="flex flex-row items-center justify-end gap-3 md:gap-28">
             <Search />
             <UserMenu currentUser={currentUser} />
           </div>
