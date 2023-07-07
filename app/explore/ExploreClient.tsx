@@ -1,19 +1,9 @@
 "use client";
-import { useCallback, useState } from "react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import Container from "../components/Container";
 import Heading from "../components/Heading";
 import HotelCard from "../components/hotelsListing/HotelCard";
-import { SafeListing } from "../types";
-import getListings, { IListingsParams } from "../actions/getListings";
-import getCurrentUser from "../actions/getCurrentUser";
 import { SafeUser } from "../types";
-import { IconType } from "react-icons";
-import CategoryView from "../components/hotelsListing/HotelCategory";
-import ClientOnly from "../components/ClientOnly";
-import Slider from "../components/Slider";
-import Categories from "../components/hotelsListing/Categories";
-
 interface ExploreClientProps {
   listings: any[];
   currentUser?: SafeUser | null;
