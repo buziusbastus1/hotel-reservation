@@ -10,7 +10,7 @@
 // https://www.mongodb.com/docs/mongodb-vscode/playgrounds/
 
 // Select the database to use.
-use('test');
+// use('test');
 
 // db.getCollection('Listing').insertOne({
 //   "title": "Cozy Apartment in the City",
@@ -105,16 +105,18 @@ use('test');
 //     "userId": ObjectId("6484ed9633c0534806b9ba1a")
 // }
 // ]);
-db.getCollection('Listing').insertOne({
-  "title": "Cozy Apartment in the Mountains",
-  "description": "A comfortable apartment located in the heart of the city.",
-  "imageSrc": "https://i.postimg.cc/mkq9kpfQ/DALL-E-2023-06-19-18-04-39-hotel-in-the-mountains.png",
-  "locationValue": "City Center",
-  "price": 150,
-  "roomCount": 2,
-  "bathroomCount": 3,
-  "category": "Beach",
-  "createdAt": ISODate("2023-05-29T06:53:20.077Z"),
-  "guestCount": 3,
-  "userId": ObjectId("6484ed9633c0534806b9ba1a")
-});
+// db.getCollection('Listing').insertOne({
+//   "title": "Cozy Apartment in the Mountains",
+//   "description": "A comfortable apartment located in the heart of the city.",
+//   "imageSrc": "https://i.postimg.cc/mkq9kpfQ/DALL-E-2023-06-19-18-04-39-hotel-in-the-mountains.png",
+//   "locationValue": "City Center",
+//   "price": 150,
+//   "roomCount": 2,
+//   "bathroomCount": 3,
+//   "category": "Beach",
+//   "createdAt": ISODate("2023-05-29T06:53:20.077Z"),
+//   "guestuserIdCount": 3,
+//   "": ObjectId("6484ed9633c0534806b9ba1a")
+// });
+db.getCollection('Listing').updateMany({}, { $set: { userId: "64ab1920c698a72eef733b0d" } })
+
