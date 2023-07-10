@@ -7,10 +7,6 @@ import HotelCard from "./components/hotelsListing/HotelCard";
 import Categories from "./components/hotelsListing/Categories";
 import Slider from "./components/Slider";
 
-// interface HomeProps {
-//   searchParams: IListingsParams;
-// }
-
 const Home = async () => {
   const listings = await getListings();
   const currentUser = await getCurrentUser();
