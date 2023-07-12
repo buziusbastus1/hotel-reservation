@@ -49,12 +49,12 @@
 // export default Search;
 "use client";
 
-import {  Listing, PrismaClient } from "@prisma/client";
+import { Listing, Prisma } from "@prisma/client";
 import prisma from "@/app/libs/prismadb";
 import {
   QueryClient,
-  useQuery,
   QueryClientProvider,
+  useQuery,
 } from "@tanstack/react-query";
 import axios from "axios";
 import debounce from "lodash.debounce";
@@ -73,8 +73,9 @@ import {
 import { Users } from "lucide-react";
 
 interface SearchBarProps {}
+const queryClient = new QueryClient();
 
-const SearchBar: FC<SearchBarProps> = ({}) => {
+const Search: FC<SearchBarProps> = ({}) => {
   const [input, setInput] = useState<string>("");
   const pathname = usePathname();
   const commandRef = useRef<HTMLDivElement>(null);
@@ -82,21 +83,17 @@ const SearchBar: FC<SearchBarProps> = ({}) => {
   // useOnClickOutside(commandRef, () => {
   //   setInput("");
   // });
-  // const prisma = new PrismaClient(); // Create a PrismaClient instance
 
-  const queryClient = new QueryClient();
   const request = debounce(async () => {
     refetch();
   }, 300);
 
   const debounceRequest = useCallback(() => {
     request();
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const {
-    // isFetching,
+    isFetching,
     data: queryResults,
     refetch,
     isFetched,
@@ -104,7 +101,9 @@ const SearchBar: FC<SearchBarProps> = ({}) => {
     queryFn: async () => {
       if (!input) return [];
       const { data } = await axios.get(`/api/search?q=${input}`);
-      return data as Listing[];
+      return data as (Listing & {
+        _count: 5;
+      })[];
     },
     queryKey: ["search-query"],
     enabled: false,
@@ -115,45 +114,170 @@ const SearchBar: FC<SearchBarProps> = ({}) => {
   }, [pathname]);
 
   return (
-    <Command
-      ref={commandRef}
-      className="relative rounded-lg border max-w-lg z-50 overflow-visible"
-    >
-      <CommandInput
-        // isLoading={isFetching}
-        onValueChange={(text) => {
-          setInput(text);
-          debounceRequest();
-        }}
-        value={input}
-        className="outline-none border-none focus:border-none focus:outline-none ring-0"
-        placeholder="Search communities..."
-      />
+    <QueryClientProvider client={queryClient}>
+      <Command
+        ref={commandRef}
+        className="relative rounded-lg border max-w-lg z-50 overflow-visible"
+      >
+        <CommandInput
+          onValueChange={(text) => {
+            setInput(text);
+            debounceRequest();
+          }}
+          value={input}
+          className="outline-none border-none focus:border-none focus:outline-none ring-0"
+          placeholder="Search communities..."
+        />
 
-      {input.length > 0 && (
-        <CommandList className="absolute bg-white top-full inset-x-0 shadow rounded-b-md">
-          {isFetched && <CommandEmpty>No results found.</CommandEmpty>}
-          {(queryResults?.length ?? 0) > 0 ? (
-            <CommandGroup heading="Communities">
-              {queryResults?.map((listing) => (
-                <CommandItem
-                  onSelect={(e) => {
-                    router.push(`/r/${e}`);
-                    router.refresh();
-                  }}
-                  key={listing.id}
-                  value={listing.title}
-                >
-                  <Users className="mr-2 h-4 w-4" />
-                  <a href={`/r/${listing.title}`}>r/{listing.title}</a>
-                </CommandItem>
-              ))}
-            </CommandGroup>
-          ) : null}
-        </CommandList>
-      )}
-    </Command>
+        {input.length > 0 && (
+          <CommandList className="absolute bg-white top-full inset-x-0 shadow rounded-b-md">
+            {isFetched && <CommandEmpty>No results found.</CommandEmpty>}
+            {(queryResults?.length ?? 0) > 0 ? (
+              <CommandGroup heading="Communities">
+                {queryResults?.map((listing) => (
+                  <CommandItem
+                    onSelect={(e) => {
+                      router.push(`/r/${e}`);
+                      router.refresh();
+                    }}
+                    key={listing.id}
+                    value={listing.title}
+                  >
+                    <Users className="mr-2 h-4 w-4" />
+                    <a href={`/r/${listing.title}`}>r/{listing.title}</a>
+                  </CommandItem>
+                ))}
+              </CommandGroup>
+            ) : null}
+          </CommandList>
+        )}
+      </Command>
+    </QueryClientProvider>
   );
 };
-
+const SearchBar = () => (
+  <QueryClientProvider client={queryClient}>
+    <Search />
+  </QueryClientProvider>
+);
 export default SearchBar;
+
+// "use client";
+
+// import * as React from "react";
+// import { useRouter } from "next/navigation";
+// import { Listing } from "@prisma/client";
+// import prisma from "@/app/libs/prismadb";
+// import { cn } from "@/lib/utils";
+// import { Button } from "./button";
+// import {
+//   CommandDialog,
+//   CommandEmpty,
+//   CommandGroup,
+//   CommandInput,
+//   CommandItem,
+//   CommandList,
+// } from "@/components/ui/Command";
+// // import { Skeleton } from "@/components/ui/skeleton";
+// // import { Icons } from "@/components/icons";
+// import { useDebounce } from "@/app/hooks/useDebounce";
+// import { filterProductsAction } from "@/app/pages/api/route";
+// import axios from "axios";
+
+// export function Search() {
+//   const router = useRouter();
+//   const [isOpen, setIsOpen] = React.useState(false);
+//   const [query, setQuery] = React.useState("");
+//   const debouncedQuery = useDebounce(query, 300);
+//   const [data, setData] = React.useState<
+//     | {
+//         category: Listing["category"];
+//         products: Pick<Listing, "id" | "title" | "category">[];
+//       }[]
+//     | null
+//   >(null);
+//   const [isPending, startTransition] = React.useTransition();
+
+//   React.useEffect(() => {
+//     if (debouncedQuery.length === 0) setData(null);
+
+//     if (debouncedQuery.length > 0) {
+//       startTransition(async () => {
+//         // const data = await filterProductsAction(debouncedQuery);
+//         // setData(data);
+//         try {
+//           const data = await filterProductsAction(debouncedQuery);
+//           setData(data);
+//         } catch (error) {
+//           console.error(error);
+//           setData(null);
+//         }
+//       });
+//     }
+//   }, [debouncedQuery]);
+
+//   const handleSelect = React.useCallback((callback: () => unknown) => {
+//     setIsOpen(false);
+//     callback();
+//   }, []);
+
+//   React.useEffect(() => {
+//     if (!isOpen) {
+//       setQuery("");
+//     }
+//   }, [isOpen]);
+
+//   return (
+//     <>
+//       <Button
+//         variant="outline"
+//         className="relative h-9 w-9 p-0 xl:h-10 xl:w-60 xl:justify-start xl:px-3 xl:py-2"
+//         onClick={() => setIsOpen(true)}
+//       >
+//         {/* <Icons.search className="h-4 w-4 xl:mr-2" aria-hidden="true" /> */}
+//         <span className="hidden xl:inline-flex">Search products...</span>
+//         <span className="sr-only">Search products</span>
+//       </Button>
+//       <CommandDialog open={isOpen} onOpenChange={setIsOpen}>
+//         <CommandInput
+//           placeholder="Search products..."
+//           value={query}
+//           onValueChange={setQuery}
+//         />
+//         <CommandList>
+//           <CommandEmpty
+//             className={cn(isPending ? "hidden" : "py-6 text-center text-sm")}
+//           >
+//             No products found.
+//           </CommandEmpty>
+//           {isPending ? (
+//             <div className="space-y-1 overflow-hidden px-1 py-2">
+//               {/* <Skeleton className="h-4 w-10 rounded" />
+//               <Skeleton className="h-8 rounded-sm" />
+//               <Skeleton className="h-8 rounded-sm" /> */}
+//             </div>
+//           ) : (
+//             data?.map((group) => (
+//               <CommandGroup
+//                 key={group.category}
+//                 className="capitalize"
+//                 heading={group.category}
+//               >
+//                 {group.products.map((item) => (
+//                   <CommandItem
+//                     key={item.id}
+//                     onSelect={() =>
+//                       handleSelect(() => router.push(`/product/${item.id}`))
+//                     }
+//                   >
+//                     {item.title}
+//                   </CommandItem>
+//                 ))}
+//               </CommandGroup>
+//             ))
+//           )}
+//         </CommandList>
+//       </CommandDialog>
+//     </>
+//   );
+// }
