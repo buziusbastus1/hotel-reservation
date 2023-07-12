@@ -1,38 +1,3 @@
-// import prisma from "@/app/libs/prismadb";
-
-// export async function filterProductsAction(query: string) {
-//   if (query.length === 0) return null;
-
-//   const filteredProducts = await prisma.listing.findMany({
-//     select: {
-//       id: true,
-//       title: true,
-//       category: true,
-//     },
-//     where: {
-//       title: {
-//         contains: query,
-//       },
-//     },
-//     orderBy: {
-//       createdAt: "desc",
-//     },
-//     take: 10,
-//   });
-
-//   const categories = Array.from(
-//     new Set(filteredProducts.map((product) => product.category))
-//   );
-
-//   const productsByCategory = categories.map((category) => ({
-//     category,
-//     products: filteredProducts.filter((product) => product.category === category),
-//   }));
-
-//   return productsByCategory;
-// }
-
-// export default prisma;
 import prisma from "@/app/libs/prismadb";
 
 export async function GET(req: Request) {
@@ -42,16 +7,37 @@ export async function GET(req: Request) {
   if (!q) return new Response('Invalid query', { status: 400 })
 
   const results = await prisma.listing.findMany({
-    where: {
-      title: {
-        startsWith: q,
-      },
+       where: {
+      OR: [
+        {
+          title: {
+            contains: q,
+            mode: 'insensitive',
+          },
+        },
+        {
+          category: {
+            contains: q,
+            mode: 'insensitive',
+          },
+        },
+        {
+          title: {
+            contains: q.toLowerCase(),
+            mode: 'insensitive',
+          },
+        },
+        {
+          category: {
+            contains: q.toLowerCase(),
+            mode: 'insensitive',
+          },
+        },
+      ],
     },
-    include: {
-      _count: true,
-    },
-    take: 5,
-  })
+  
+    // take: 50,
+  });
 
   return new Response(JSON.stringify(results))
 }

@@ -71,18 +71,19 @@ import {
 } from "@/components/ui/Command";
 // import { useOnClickOutside } from "@/hooks/use-on-click-outside";
 import { Users } from "lucide-react";
+import { useOnClickOutside } from "@/app/hooks/useClickOutside";
 
-interface SearchBarProps {}
+interface SearchProps {}
 const queryClient = new QueryClient();
 
-const Search: FC<SearchBarProps> = ({}) => {
+const Search: FC<SearchProps> = ({}) => {
   const [input, setInput] = useState<string>("");
   const pathname = usePathname();
   const commandRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
-  // useOnClickOutside(commandRef, () => {
-  //   setInput("");
-  // });
+  useOnClickOutside(commandRef, () => {
+    setInput("");
+  });
 
   const request = debounce(async () => {
     refetch();
@@ -90,7 +91,7 @@ const Search: FC<SearchBarProps> = ({}) => {
 
   const debounceRequest = useCallback(() => {
     request();
-  }, []);
+  }, [request]);
 
   const {
     isFetching,
@@ -101,9 +102,7 @@ const Search: FC<SearchBarProps> = ({}) => {
     queryFn: async () => {
       if (!input) return [];
       const { data } = await axios.get(`/api/search?q=${input}`);
-      return data as (Listing & {
-        _count: 5;
-      })[];
+      return data as Listing[];
     },
     queryKey: ["search-query"],
     enabled: false,
@@ -133,21 +132,47 @@ const Search: FC<SearchBarProps> = ({}) => {
           <CommandList className="absolute bg-white top-full inset-x-0 shadow rounded-b-md">
             {isFetched && <CommandEmpty>No results found.</CommandEmpty>}
             {(queryResults?.length ?? 0) > 0 ? (
-              <CommandGroup heading="Communities">
-                {queryResults?.map((listing) => (
-                  <CommandItem
-                    onSelect={(e) => {
-                      router.push(`/r/${e}`);
-                      router.refresh();
-                    }}
-                    key={listing.id}
-                    value={listing.title}
-                  >
-                    <Users className="mr-2 h-4 w-4" />
-                    <a href={`/r/${listing.title}`}>r/{listing.title}</a>
-                  </CommandItem>
-                ))}
-              </CommandGroup>
+              <>
+                <CommandGroup heading="Name">
+                  {queryResults?.map((listing) => (
+                    <CommandItem
+                      onSelect={() => {
+                        router.push(`/listings/${listing.id}`);
+                        router.refresh();
+                      }}
+                      key={`title-${listing.title}`}
+                      value={listing.title}
+                    >
+                      <Users className="mr-2 h-4 w-4" />
+                      <a href={`/listings/${listing.id}`}>{listing.title}</a>
+                    </CommandItem>
+                  ))}
+                </CommandGroup>
+                <CommandGroup heading="Categories">
+                  {queryResults
+                    ?.filter(
+                      (listing, index, self) =>
+                        self.findIndex(
+                          (l) => l.category === listing.category
+                        ) === index
+                    )
+                    .map((listing) => (
+                      <CommandItem
+                        onSelect={() => {
+                          router.push(`/explore?${listing.category}`);
+                          router.refresh();
+                        }}
+                        key={`category-${listing.category}`}
+                        value={listing.category}
+                      >
+                        {/* <CategoryIcon className="mr-2 h-4 w-4" /> */}
+                        <a href={`/explore?${listing.category}`}>
+                          {listing.category}
+                        </a>
+                      </CommandItem>
+                    ))}
+                </CommandGroup>
+              </>
             ) : null}
           </CommandList>
         )}

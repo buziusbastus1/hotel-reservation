@@ -1,8 +1,9 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { IoMdClose } from "react-icons/io";
 import Button from "../Button";
+import { useOnClickOutside } from "@/app/hooks/useClickOutside";
 interface ModalProps {
   isOpen?: boolean;
   onClose: () => void;
@@ -28,10 +29,14 @@ const Modal: React.FC<ModalProps> = ({
   secondaryAction,
   secondaryActionLabel,
 }) => {
+  const commandRef = useRef<HTMLDivElement>(null);
+
   const [showModal, setShowModal] = useState(isOpen);
+
   useEffect(() => {
     setShowModal(isOpen);
   }, [isOpen]);
+
   const handleClose = useCallback(() => {
     if (disabled) {
       return;
@@ -42,6 +47,8 @@ const Modal: React.FC<ModalProps> = ({
       onClose();
     }, 300);
   }, [disabled, onClose]);
+
+  useOnClickOutside(commandRef, handleClose);
 
   const handleSubmit = useCallback(() => {
     if (disabled) {
@@ -54,6 +61,7 @@ const Modal: React.FC<ModalProps> = ({
     if (disabled || !secondaryAction) {
       return;
     }
+
     secondaryAction();
   }, [disabled, secondaryAction]);
   if (!isOpen) {
@@ -75,7 +83,10 @@ const Modal: React.FC<ModalProps> = ({
           focus:outline-none
           bg-neutral-800/70"
       >
-        <div className="relative w-full md:w-4/6 lg:w-3/6 xl:w-2/5 my-6 mx-auto h-5/6 lg:h-5/6 md:h-5/6">
+        <div
+          ref={commandRef}
+          className="relative w-full md:w-4/6 lg:w-3/6 xl:w-2/5 my-6 mx-auto h-5/6 lg:h-5/6 md:h-5/6"
+        >
           {/* cont */}
           <div
             className={`translate duration-300 h-full 
