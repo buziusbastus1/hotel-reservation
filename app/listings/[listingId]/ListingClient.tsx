@@ -120,7 +120,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
               />
             </div>
           </div>
-          <div className="w-full md:w-1/3 mt-6  md:mt-24">
+          <div className="mt-6  md:mt-24">
             <HotelReservation
               price={listing.price}
               totalPrice={totalPrice}

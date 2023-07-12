@@ -37,7 +37,7 @@ const Categories = ({ index }: { index: number }) => {
           flex-row 
           items-center 
           overflow-x-auto
-          mb-3
+          mb-3          
         "
       >
         <CategoryBox

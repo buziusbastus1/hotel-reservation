@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 const Slider = ({ children }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
@@ -56,15 +56,15 @@ const Slider = ({ children }) => {
       </div>
 
       <button
-        className={`absolute top-1/2 transform -translate-y-1/2 left-4 bg-gray-500 text-white font-bold py-2 px-4 rounded-full focus:outline-none 
+        className={` outline absolute top-1/2 transform -translate-y-1/2 left-4 bg-gray-500 text-white font-bold py-2 px-4 rounded-full focus:outline-none 
         ${currentIndex === 0 ? "hidden" : ""}`}
         onClick={handlePrev}
       >
-        Previous
+        <FaChevronLeft className="text-2xl" />
       </button>
 
       <button
-        className={`absolute top-1/2 transform -translate-y-1/2 right-4 bg-gray-500 text-white font-bold py-2 px-4 rounded-full focus:outline-none 
+        className={`outline absolute top-1/2 transform -translate-y-1/2 right-4 bg-gray-500 text-white font-bold py-2 px-4 rounded-full focus:outline-none 
         ${
           currentIndex >= Math.ceil(children.length / swipesPerScreen) - 1
             ? "hidden"
@@ -72,7 +72,7 @@ const Slider = ({ children }) => {
         }`}
         onClick={handleNext}
       >
-        Next
+        <FaChevronRight className="text-2xl" />
       </button>
     </div>
   );
