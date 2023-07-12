@@ -72,6 +72,7 @@ import {
 // import { useOnClickOutside } from "@/hooks/use-on-click-outside";
 import { Users } from "lucide-react";
 import { useOnClickOutside } from "@/app/hooks/useClickOutside";
+import { BiCategoryAlt } from "react-icons/bi";
 
 interface SearchProps {}
 const queryClient = new QueryClient();
@@ -165,7 +166,7 @@ const Search: FC<SearchProps> = ({}) => {
                         key={`category-${listing.category}`}
                         value={listing.category}
                       >
-                        {/* <CategoryIcon className="mr-2 h-4 w-4" /> */}
+                        <BiCategoryAlt className="mr-2 h-4 w-4" />
                         <a href={`/explore?${listing.category}`}>
                           {listing.category}
                         </a>
