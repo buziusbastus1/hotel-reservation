@@ -1,0 +1,7 @@
+{
+    "build": {
+        "env": {
+            "PRISMA_GENERATE_ON_PRE_BUILD": "true"
+        }
+    }
+}

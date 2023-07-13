@@ -118,7 +118,7 @@
 //   "guestuserIdCount": 3,
 //   "": ObjectId("6484ed9633c0534806b9ba1a")
 // });
-db.getCollection('Listing').updateMany({}, { $set: { userId: "64ab1920c698a72eef733b0d" } })
+// db.getCollection('Listing').updateMany({}, { $set: { userId: "64ab1920c698a72eef733b0d" } })
 // db.getCollection('Listing').insertMany([
 //   {
 //     "title": "Cozy Cabin Retreat in the Mountains",
