@@ -31,12 +31,24 @@ export async function GET(req: Request) {
           category: {
             contains: q.toLowerCase(),
             mode: 'insensitive',
-          },
+          },},
+          
+            {
+        locationValue: {
+          contains: q,
+          mode: 'insensitive',
+        },
+      },
+      {
+        locationValue: {
+          contains: q.toLowerCase(),
+          mode: 'insensitive',
+        },
         },
       ],
     },
   
-    // take: 50,
+    take: 15,
   });
 
   return new Response(JSON.stringify(results))

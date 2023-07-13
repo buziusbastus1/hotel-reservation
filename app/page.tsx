@@ -6,22 +6,17 @@ import EmmptyState from "./components/EmptyState";
 import HotelCard from "./components/hotelsListing/HotelCard";
 import Categories from "./components/hotelsListing/Categories";
 import Slider from "./components/Slider";
+import React from "react";
 
 const Home = async () => {
   const listings = await getListings();
   const currentUser = await getCurrentUser();
 
-  const firstCategory = "Beach";
-  const secondCategory = "Mountains";
-
-  const filteredListingsFirst = listings.filter(
-    (listing) => listing.category === firstCategory
-  );
-
-  const filteredListingsSecond = listings.filter(
-    (listing) => listing.category === secondCategory
-  );
-
+  const categories = [
+    { category: "Beach", index: 0 },
+    { category: "Mountains", index: 1 },
+    { category: "City", index: 2 },
+  ];
   if (listings.length === 0) {
     return (
       <ClientOnly>
@@ -32,29 +27,24 @@ const Home = async () => {
   return (
     <ClientOnly>
       <Container>
-        <Categories index={0} />
-        <Slider>
-          {filteredListingsFirst.map((listing: any) => (
-            <HotelCard
-              currentUser={currentUser}
-              key={listing.id}
-              data={listing}
-            />
-          ))}
-        </Slider>
-        <Categories index={1} />
-        <Slider>
-          {filteredListingsSecond.map((listing: any) => (
-            <HotelCard
-              currentUser={currentUser}
-              key={listing.id}
-              data={listing}
-            />
-          ))}
-        </Slider>
+        {categories.map(({ category, index }) => (
+          <React.Fragment key={index}>
+            <Categories index={index} />
+            <Slider>
+              {listings
+                .filter((listing) => listing.category === category)
+                .map((listing) => (
+                  <HotelCard
+                    currentUser={currentUser}
+                    key={listing.id}
+                    data={listing}
+                  />
+                ))}
+            </Slider>
+          </React.Fragment>
+        ))}
       </Container>
     </ClientOnly>
   );
 };
 export default Home;
-// <div>{listing.title}</div>

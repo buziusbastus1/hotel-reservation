@@ -119,4 +119,70 @@
 //   "": ObjectId("6484ed9633c0534806b9ba1a")
 // });
 db.getCollection('Listing').updateMany({}, { $set: { userId: "64ab1920c698a72eef733b0d" } })
-
+// db.getCollection('Listing').insertMany([
+//   {
+//     "title": "Cozy Cabin Retreat in the Mountains",
+//     "description": "Escape to our cozy cabin retreat nestled in the breathtaking mountains. Experience the tranquility of nature, enjoy hiking trails with scenic views, and unwind in front of a warm fireplace. The perfect getaway for mountain lovers.",
+//     "imageSrc": "https://i.postimg.cc/NGPmdF95/DALL-E-2023-06-19-18-04-40-hotel-in-the-mountains.png",
+//     "locationValue": "Switzerland, Zermatt",
+//     "price": 200,
+//     "roomCount": 2,
+//     "bathroomCount": 1,
+//     "category": "Mountains",
+//     "createdAt": ISODate("2023-03-29T06:53:20.077Z"),
+//     "guestCount": 4,
+//     "userId": ObjectId("6484ed9633c0534806b9ba1a")
+//   },
+//   {
+//     "title": "Mountain Chalet with Panoramic Views",
+//     "description": "Indulge in luxury at our mountain chalet with stunning panoramic views. Relax on the spacious deck, breathe in the fresh mountain air, and immerse yourself in the beauty of the surrounding nature. A true mountain paradise.",
+//     "imageSrc": "https://i.postimg.cc/LX9LbZ3Z/DALL-E-2023-06-19-18-04-41-hotel-in-the-mountains.png",
+//     "locationValue": "Canada, Banff",
+//     "price": 300,
+//     "roomCount": 3,
+//     "bathroomCount": 2,
+//     "category": "Mountains",
+//     "createdAt": ISODate("2023-03-29T06:53:20.077Z"),
+//     "guestCount": 6,
+//     "userId": ObjectId("6484ed9633c0534806b9ba1a")
+//   },
+//   {
+//     "title": "Rustic Mountain Lodge with Modern Comforts",
+//     "description": "Experience the perfect blend of rustic charm and modern comforts at our mountain lodge. Surrounded by towering pines and majestic peaks, this lodge offers a cozy retreat for mountain enthusiasts seeking relaxation and adventure.",
+//     "imageSrc": "https://i.postimg.cc/90zTW5Sm/DALL-E-2023-06-19-18-04-48-hotel-in-the-mountains-photo.png",
+//     "locationValue": "United States, Aspen",
+//     "price": 400,
+//     "roomCount": 4,
+//     "bathroomCount": 3,
+//     "category": "Mountains",
+//     "createdAt": ISODate("2023-03-29T06:53:20.077Z"),
+//     "guestCount": 8,
+//     "userId": ObjectId("6484ed9633c0534806b9ba1a")
+//   },
+//   {
+//     "title": "Mountain View Resort and Spa",
+//     "description": "Immerse yourself in tranquility and serenity at our mountain view resort and spa. Enjoy breathtaking views, rejuvenating spa treatments, and a range of outdoor activities. Experience the ultimate mountain retreat.",
+//     "imageSrc": "https://i.postimg.cc/9FRTK2Z1/DALL-E-2023-06-19-18-04-49-hotel-in-the-mountains-photo.png",
+//     "locationValue": "Austria, Tyrol",
+//     "price": 500,
+//     "roomCount": 5,
+//     "bathroomCount": 4,
+//     "category": "Mountains",
+//     "createdAt": ISODate("2023-03-29T06:53:20.077Z"),
+//     "guestCount": 10,
+//     "userId": ObjectId("6484ed9633c0534806b9ba1a")
+//   },
+//   {
+//     "title": "Alpine Retreat with Luxury Accommodations",
+//     "description": "Discover the epitome of luxury at our alpine retreat. With lavish accommodations, gourmet dining, and stunning alpine vistas, this retreat offers an unforgettable experience for those seeking the ultimate mountain getaway.",
+//     "imageSrc": "https://i.postimg.cc/LsBjDVLp/DALL-E-2023-06-19-18-04-50-hotel-in-the-mountains-photo.png",
+//     "locationValue": "France, Chamonix",
+//     "price": 600,
+//     "roomCount": 6,
+//     "bathroomCount": 5,
+//     "category": "Mountains",
+//     "createdAt": ISODate("2023-03-29T06:53:20.077Z"),
+//     "guestCount": 12,
+//     "userId": ObjectId("6484ed9633c0534806b9ba1a")
+//   }
+// ]);

@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import { TbBeach } from "react-icons/tb";
 import { GiMountainRoad } from "react-icons/gi";
+import { FaCity } from "react-icons/fa";
 import CategoryBox from "../CategoryBox";
 import Container from "../Container";
 
@@ -15,7 +16,12 @@ export const categories = [
   {
     label: "Mountains",
     icon: GiMountainRoad,
-    description: "This property is close to the Mountains!",
+    description: "This property is near the mountains!",
+  },
+  {
+    label: "City",
+    icon: FaCity,
+    description: "This hotel is in the city!",
   },
 ];
 
