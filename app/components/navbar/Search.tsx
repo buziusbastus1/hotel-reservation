@@ -46,7 +46,7 @@ const Search: FC<SearchProps> = ({}) => {
   }, [request]);
 
   const {
-    isFetching,
+    // isFetching,
     data: queryResults,
     refetch,
     isFetched,
