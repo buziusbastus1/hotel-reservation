@@ -8,7 +8,7 @@ const Logo = () => {
   return (
     <div
       onClick={() => router.push("/")}
-      className="hidden md:flex items-center"
+      className="hidden md:flex items-center cursor-pointer"
     >
       <BiHotel size={40} />
       <span className="ml-2 flex-shrink-0 font-bold whitespace-nowrap">
