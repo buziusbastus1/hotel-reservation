@@ -20,7 +20,7 @@ const Home = async () => {
   if (listings.length === 0) {
     return (
       <ClientOnly>
-        <EmmptyState showReset />
+        <EmmptyState />
       </ClientOnly>
     );
   }
