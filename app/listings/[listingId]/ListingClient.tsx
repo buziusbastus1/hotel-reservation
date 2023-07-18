@@ -100,7 +100,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
     <Container>
       <div className="flex flex-col gap-6">
         <div className="flex flex-col md:flex-row md:gap-10 mt-6">
-          <div className="w-full md:w-2/3">
+          <div className="w-full md:w-2/4 lg:w-2/3 ">
             <div>
               <HotelHead
                 title={listing.title}
@@ -120,7 +120,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
               />
             </div>
           </div>
-          <div className="mt-6  md:mt-24">
+          <div className="mt-6 w-full  md:w-2/4 lg:w-1/3  md:mt-24">
             <HotelReservation
               price={listing.price}
               totalPrice={totalPrice}
