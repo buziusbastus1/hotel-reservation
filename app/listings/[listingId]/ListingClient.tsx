@@ -4,14 +4,15 @@ import { Range } from "react-date-range";
 import axios from "axios";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { SafeListing, SafeReservation, SafeUser } from "@/app/types";
-import Container from "@/app/components/Container";
-import { categories } from "@/app/components/hotelsListing/Categories";
-import HotelHead from "@/app/components/hotelsListing/HotelHead";
-import HotelInfo from "@/app/components/hotelsListing/HotelInfo";
-import useLoginModal from "@/app/hooks/useLoginModal";
 import { useRouter } from "next/navigation";
 import { differenceInCalendarDays, eachDayOfInterval } from "date-fns";
 import { toast } from "react-hot-toast";
+
+import { categories } from "@/app/components/hotelsListing/Categories";
+import Container from "@/app/components/Container";
+import HotelHead from "@/app/components/hotelsListing/HotelHead";
+import HotelInfo from "@/app/components/hotelsListing/HotelInfo";
+import useLoginModal from "@/app/hooks/useLoginModal";
 import HotelReservation from "@/app/components/hotelsListing/HotelReservation";
 
 const initialDateRange = {
