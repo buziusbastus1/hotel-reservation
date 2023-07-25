@@ -3,13 +3,11 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useCallback, useMemo } from "react";
+import { format } from "date-fns";
 
 import { SafeListing, SafeReservation, SafeUser } from "@/app/types";
-
 import HeartButton from "../HeartButton";
 import Button from "../Button";
-import ClientOnly from "../ClientOnly";
-import { format } from "date-fns";
 
 interface HotelCardProps {
   data: SafeListing;

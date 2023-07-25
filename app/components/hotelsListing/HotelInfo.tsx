@@ -1,10 +1,7 @@
 "use client";
 
 import { IconType } from "react-icons";
-import { SafeUser } from "@/app/types";
-
 import CategoryView from "./HotelCategory";
-
 interface HotelInfoProps {
   description: string;
   guestCount: number;
