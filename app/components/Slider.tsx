@@ -1,6 +1,8 @@
 "use client";
+
 import { useState, useEffect } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+
 const Slider: React.FC<{ children: React.ReactNode[] }> = ({ children }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);

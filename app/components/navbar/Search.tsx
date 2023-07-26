@@ -1,16 +1,21 @@
 "use client";
 
+import { FC, useCallback, useEffect, useRef, useState } from "react";
 import { Listing } from "@prisma/client";
+import { usePathname, useRouter } from "next/navigation";
+import axios from "axios";
+import debounce from "lodash.debounce";
 import {
   QueryClient,
   QueryClientProvider,
   useQuery,
 } from "@tanstack/react-query";
-import axios from "axios";
-import debounce from "lodash.debounce";
-import { usePathname, useRouter } from "next/navigation";
-import { FC, useCallback, useEffect, useRef, useState } from "react";
 
+import { Hotel } from "lucide-react";
+import { BiCategoryAlt } from "react-icons/bi";
+import { FaMapMarkedAlt } from "react-icons/fa";
+
+import { useOnClickOutside } from "@/app/hooks/useClickOutside";
 import {
   Command,
   CommandEmpty,
@@ -19,11 +24,6 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/Command";
-
-import { Hotel } from "lucide-react";
-import { useOnClickOutside } from "@/app/hooks/useClickOutside";
-import { BiCategoryAlt } from "react-icons/bi";
-import { FaMapMarkedAlt } from "react-icons/fa";
 
 interface SearchProps {}
 const queryClient = new QueryClient();

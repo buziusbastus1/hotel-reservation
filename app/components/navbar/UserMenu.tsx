@@ -1,15 +1,16 @@
 "use client";
 
+import { useCallback, useRef, useState } from "react";
+import { signOut } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import { AiOutlineMenu } from "react-icons/ai";
+
 import Avatar from "../Avatar";
 import MenuItem from "./MenuItem";
-import { useCallback, useRef, useState } from "react";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
-import { signOut } from "next-auth/react";
-import { SafeUser } from "@/app/types";
-import { useRouter } from "next/navigation";
 import { useOnClickOutside } from "@/app/hooks/useClickOutside";
+import { SafeUser } from "@/app/types";
 
 interface UserMenuProps {
   currentUser?: SafeUser | null;
